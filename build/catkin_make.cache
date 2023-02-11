@@ -1,0 +1,2 @@
+lakibeam1:te
+-DCATKIN_DEVEL_PREFIX=/home/yang/lakib/devel -DCMAKE_INSTALL_PREFIX=/home/yang/lakib/install -G Unix Makefiles
