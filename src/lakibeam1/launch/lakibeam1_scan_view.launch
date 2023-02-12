@@ -17,5 +17,5 @@
         <param name="scan_range_start" type="string" value="45" /><!--雷达扫描起始角度，范围：45~315-->
         <param name="scan_range_stop" type="string" value="315" /><!--雷达扫描结束角度，范围：45~315，结束角度必须大于起始角度-->
     </node>
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find lakibeam1)/rviz/lakibeam1_scan.rviz" />
+    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find lakibeam1)/rviz/lakibeam1_scan.rviz" /> -->
 </launch>

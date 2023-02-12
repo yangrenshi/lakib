@@ -6,8 +6,8 @@ import struct
 import serial
 
 def cb(msg):
+    global te_angle
     min_dist = 0
-    te_angle = 112.5
     scan_filter=[]
     empty_list =[]
     all_dist_list = []
@@ -34,12 +34,26 @@ def cb(msg):
             try:
                 if msg.ranges[j*4] > 0 :
                     if msg.ranges[j*4] == min_dist:
-                        te_angle = j       
+                        te_angle = j   
+                    if te_angle != 0:
+                        break    
             except IndexError:
                 continue
     
+    if te_angle == 0:
+        while te_angle == 0:
+            for j in range(90,136):
+                try:
+                    if msg.ranges[j*4] > 0 :
+                        if msg.ranges[j*4] == min_dist:
+                            te_angle = j  
+                        if te_angle != 0:
+                            break    
+                except IndexError:
+                    continue
+
     angle = te_angle - start_angle
-    dist = min_dist
+    dist = int(min_dist*1000)
     rospy.loginfo(f"dist = {dist},angle = {angle}")
     temp = struct.pack("<BBff",0x2C,0x12,dist,angle)
     ser.write(temp)
@@ -54,4 +68,5 @@ if __name__ == "__main__" :
     baudrate = 9600  # 波特率
     ser = serial.Serial(port, baudrate, timeout=9)
     start_angle = 112.5
+    te_angle = 0
     main()

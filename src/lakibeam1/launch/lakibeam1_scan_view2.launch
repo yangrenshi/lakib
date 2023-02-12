@@ -19,5 +19,5 @@
     </node>
     <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find lakibeam1)/rviz/lakibeam1_scan.rviz" /> -->
     <!-- <node pkg="te" name="te" type="add_ser1_add.py" output="screen"></node> -->
-    <node pkg="te" name="laser_dist" type="leida" output="screen"></node>
+    <node pkg="te" name="te" type="add_dict_ser.py" output="screen"></node>
 </launch>

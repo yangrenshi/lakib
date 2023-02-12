@@ -159,16 +159,20 @@ target_link_libraries(leida
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
+aux_source_directory(./scripts/** SrcFiles)#将源文件列表写在变量SrcFiles中
+
 catkin_install_python(PROGRAMS
-  scripts/shu1.py
-  scripts/uart.py
-  scripts/shuju.py
-  scripts/x_and_y.py
-  scripts/add_ser.py
-  scripts/add.py
-  scripts/add_ser_kem.py
-  scripts/add_ser1_add.py
-  scripts/add_ser1.py
+  ${SrcFiles}
+  # scripts/add_dict.py
+  # scripts/shu1.py
+  # scripts/uart.py
+  # scripts/shuju.py
+  # scripts/x_and_y.py
+  # scripts/add_ser.py
+  # scripts/add.py
+  # scripts/add_ser_kem.py
+  # scripts/add_ser1_add.py
+  # scripts/add_ser1.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
